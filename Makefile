@@ -1,4 +1,5 @@
 MANAGE_PY=django/manage.py
+DJANGO_PATH=django/cadu/
 DEV_SETTINGS=cadu.settings.development
 TEST_SETTINGS=cadu.settings.test
 PROD_SETTINGS=cadu.settings.production
@@ -14,6 +15,9 @@ migrate:
 
 migrations:
 	@python $(MANAGE_PY) makemigrations --settings=$(DEV_SETTINGS)
+
+create-app:
+	@python $(MANAGE_PY) startapp $(name) --settings=$(DEV_SETTINGS)
 
 requirements-dev:
 	@pip install -U -r django/requirements/development.txt
