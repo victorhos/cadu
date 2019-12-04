@@ -43,10 +43,9 @@ django/cadu/customers/admin.py                      1      0   100%
 django/cadu/customers/apps.py                       3      3     0%
 django/cadu/customers/enums.py                      4      0   100%
 django/cadu/customers/helpers.py                   17      0   100%
-django/cadu/customers/models.py                    53      2    96%
-django/cadu/customers/serializers.py               68      2    97%
-django/cadu/customers/urls.py                       3      3     0%
-django/cadu/customers/views.py                     18      0   100%
+django/cadu/customers/models.py                    53      0   100%
+django/cadu/customers/serializers.py               70      0   100%
+django/cadu/customers/views.py                     22      0   100%
 django/cadu/enums.py                                6      0   100%
 django/cadu/extensions/__init__.py                  0      0   100%
 django/cadu/extensions/publisher/__init__.py        0      0   100%
@@ -55,7 +54,7 @@ django/cadu/extensions/publisher/helpers.py         4      0   100%
 django/cadu/extensions/publisher/publisher.py      41      2    95%
 django/cadu/urls.py                                 5      0   100%
 -------------------------------------------------------------------
-TOTAL                                             235     15    94%
+TOTAL                                             238      8    97%
 ```
 
 ### Load customers base
