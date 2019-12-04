@@ -1,3 +1,5 @@
 Django==2.2.7
 djangorestframework==3.10.3
 requests==2.22.0
+luizalabs-django-toolkit==2.2.0
+
