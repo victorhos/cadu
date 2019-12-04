@@ -4,7 +4,7 @@ from .models import Customer
 from .serializers import CustomerCreateSerializer, CustomerSerializer
 
 
-class CustomerViews(generics.ListAPIView):
+class CustomerListViews(generics.ListAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 

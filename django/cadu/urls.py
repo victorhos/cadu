@@ -12,7 +12,7 @@ urlpatterns = [
     ),
     url(
         r'^customers/',
-        views.CustomerViews.as_view(),
+        views.CustomerListViews.as_view(),
         name='customers_list'
     ),
     path('admin/', admin.site.urls),
