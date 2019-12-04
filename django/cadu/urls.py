@@ -6,6 +6,11 @@ from cadu.customers import views
 
 urlpatterns = [
     url(
+        r'^customer/(?P<pk>\d+)/',
+        views.CustomerRetrieveUpdateDestroyViews.as_view(),
+        name='customers_retrive_update'
+    ),
+    url(
         r'^customer/',
         views.CustomerCreateViews.as_view(),
         name='customers_create'

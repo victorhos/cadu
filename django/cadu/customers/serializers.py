@@ -118,6 +118,9 @@ class CustomerCreateSerializer(serializers.ModelSerializer):
         model = Customer
         exclude = ('type', )
 
+    def to_representation(self, value):
+        return CustomerSerializer(value).data
+
     def create(self, validated_data):
         location = validated_data['location']
         picture = validated_data['picture']

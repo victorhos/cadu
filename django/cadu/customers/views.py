@@ -22,6 +22,14 @@ class CustomerListViews(generics.ListAPIView):
         return queryset
 
 
-class CustomerCreateViews(generics.ListCreateAPIView):
+class CustomerCreateViews(generics.CreateAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerCreateSerializer
+
+
+class CustomerRetrieveUpdateDestroyViews(
+    generics.RetrieveUpdateDestroyAPIView
+):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerCreateSerializer
+    lookup_field = 'pk'
