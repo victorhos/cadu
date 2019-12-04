@@ -1,4 +1,3 @@
-# CADastro Unico - Cadu
 # Cadastro único
 
 Challenge Juntos Somos+
