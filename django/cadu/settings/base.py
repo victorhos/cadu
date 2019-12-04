@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = 'z$1$stcvh2uczkdj5@(@=+oeaj7xc=c#bw7e-0qjzs9vez=d7_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 
     # apps
     'cadu.customers',
+    'cadu.extensions.publisher'
 ]
 
 MIDDLEWARE = [
@@ -128,4 +130,60 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',  # noqa
     'PAGE_SIZE': 100
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        },
+        'add_hostname': {
+            '()': 'django_toolkit.logs.filters.AddHostName',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': (
+                '%(levelname)s %(asctime)s %(name)s %(module)s '
+                '%(process)d %(thread)d %(message)s'
+            )
+        },
+        'simple': {
+            'format': '%(hostname)s %(levelname)s %(name)s %(message)s'
+        },
+    },
+    'handlers': {
+        'stdout': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+            'stream': sys.stdout,
+            'filters': [
+                'add_hostname',
+            ]
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['stdout'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django': {
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django_toolkit': {
+            'handlers': ['stdout'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'cadu': {
+            'handlers': ['stdout'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    }
 }
